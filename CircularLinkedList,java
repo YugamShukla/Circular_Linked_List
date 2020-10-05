@@ -1,4 +1,4 @@
-package practice;
+package LinkedList;
 
 public class CircularLinkedList {
     
@@ -33,6 +33,22 @@ public class CircularLinkedList {
         size++;
     }
 
+    public void addTail(int value){
+        Node temp= new Node(value, null);
+        
+        if (size==0) {
+            tail=temp;
+            temp.next=temp;
+        }
+        else{
+            temp.next=tail.next;
+            tail.next=temp;
+            tail=temp;
+        }
+        size++;
+    }
+
+    
     public void print() {
         Node temp = tail.next;
         while (temp != tail) {
@@ -44,7 +60,11 @@ public class CircularLinkedList {
 
     public static void main(String[] args) {
         CircularLinkedList cll1=new CircularLinkedList();
-        cll1.addHead(500);
+        cll1.addHead(100);
+        cll1.addTail(200);
+        cll1.addTail(300);
+        cll1.addTail(400);
         cll1.print();
+        
     }
 }
